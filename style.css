@@ -93,3 +93,19 @@ progress::-webkit-progress-value{
     gap: 12px;
     margin-top: 2%;
 }
+
+@media (max-width: 500px) {
+    #botoes{
+        height: 6vh;
+        gap: 5%;
+    }
+    .botao{
+        font-size: 16px;
+    }
+    .tituloItem{
+        font-size: 17px;
+    }
+    progress {
+        height: 20px;
+    }
+}

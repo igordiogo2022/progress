@@ -73,3 +73,21 @@ input::placeholder{
     text-decoration: none;
     box-shadow: 10px 7px 10px black;
 }
+
+@media (max-width: 500px) {
+    form{
+        width: 80%;
+    }
+    label{
+        width: 50%;
+        font-size: 17px;
+    }
+    input{
+        font-size: 17px;
+        width: 50%;
+    }
+    #botao{
+        padding: 1% 0;
+        width: 40%;
+    }
+}
