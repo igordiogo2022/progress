@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --cor1: rgb(87, 87, 87);
+    --cor2: white;
+    --fonte1: "Poppins", serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: var(--cor1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+form{
+    display: flex;
+    width: 40%;
+}
+#titulo{
+    font-family: var(--fonte1);
+    color: var(--cor2);
+    letter-spacing: 1px;
+    font-size: 26px;
+    padding: 1% 0;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 30%;
+    color: var(--cor2);
+    font-size: 20px;
+    font-family: var(--fonte1);
+}
+.input{
+    display: flex;
+}
+label{
+    width: 40%;
+}
+#index, #meta{
+    width: 30%;
+}
+input{
+    width: 60%;
+}
+input{
+    height: 20%;
+    border: 0;
+    background-color: var(--cor1);
+    color: white;
+    border-bottom:1px solid white;
+    outline: 0;
+    font-size: 18px;
+}
+input::placeholder{
+    color: white;
+}
+#botao{
+    background-color: var(--cor2);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    padding: 0.5% 0;
+    font-size: 20px;
+    color: var(--cor5);
+    font-family: var(--fonte1);
+    text-decoration: none;
+    box-shadow: 10px 7px 10px black;
+}
