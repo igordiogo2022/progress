@@ -10,15 +10,6 @@ try{
 
 // Exibe as itens na tela
 function carregarProgress(){
-
-    // <div class="item">
-    //         <h2 class="tituloItem">Treino</h2>
-    //         <progress value="5" max="10"></progress>
-    //         <div class="botoesItem">
-    //             <button class="botao">+</button>
-    //             <button class="botao">-</button>
-    //         </div>
-    //     </div>
     
     if(listaProgress.length>0){
         contadorIndex = 1;
@@ -41,9 +32,10 @@ function carregarProgress(){
             btnAdicionar.setAttribute("onclick","adicionarPonto("+(contadorIndex-1)+")");
             btnRemover.setAttribute("onclick","removerPonto("+(contadorIndex-1)+")");
 
-            progress.id = contadorIndex;
+            progress.id = "prgss"+contadorIndex;
+            titulo.id = "ttl"+contadorIndex;
             
-            titulo.innerHTML = contadorIndex+". "+progressLS[0];
+            titulo.innerHTML = contadorIndex+". "+progressLS[0]+" ("+progressLS[1]+"/"+progressLS[2]+")";
             contadorIndex++;
             btnAdicionar.innerHTML = "+";
             btnRemover.innerHTML = "-";
@@ -118,8 +110,10 @@ function excluir(){
 
 function adicionarPonto(id){
     listaProgress[id][1] = listaProgress[id][1]+1;
-    
-    progress = document.getElementById(id+1);
+
+    titulo = document.getElementById("ttl"+(id+1));
+    titulo.innerHTML = (contadorIndex-1)+". "+listaProgress[id][0]+" ("+listaProgress[id][1]+"/"+listaProgress[id][2]+")";
+    progress = document.getElementById("prgss"+(id+1));
     progress.value = listaProgress[id][1];
     
     localStorage.setItem("listaProgressLS", JSON.stringify(listaProgress));
@@ -127,7 +121,9 @@ function adicionarPonto(id){
 function removerPonto(id){
     listaProgress[id][1] = listaProgress[id][1]-1;
     
-    progress = document.getElementById(id+1);
+    titulo = document.getElementById("ttl"+(id+1));
+    titulo.innerHTML = (contadorIndex-1)+". "+listaProgress[id][0]+" ("+listaProgress[id][1]+"/"+listaProgress[id][2]+")";
+    progress = document.getElementById("prgss"+(id+1));
     progress.value = listaProgress[id][1];
 
     localStorage.setItem("listaProgressLS", JSON.stringify(listaProgress));
