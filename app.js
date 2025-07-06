@@ -34,6 +34,7 @@ function carregarProgress(){
 
             progress.id = "prgss"+contadorIndex;
             titulo.id = "ttl"+contadorIndex;
+            item.id = contadorIndex;
             
             titulo.innerHTML = contadorIndex+". "+progressLS[0]+" ("+progressLS[1]+"/"+progressLS[2]+")";
             contadorIndex++;
@@ -48,6 +49,7 @@ function carregarProgress(){
             
             main = document.querySelector("main");
             main.appendChild(item);
+            analisaPrgss(contadorIndex-1);
         }
     }
 }
@@ -110,13 +112,14 @@ function excluir(){
 
 function adicionarPonto(id){
     listaProgress[id][1] = listaProgress[id][1]+1;
-
+    
     titulo = document.getElementById("ttl"+(id+1));
     titulo.innerHTML = (contadorIndex-1)+". "+listaProgress[id][0]+" ("+listaProgress[id][1]+"/"+listaProgress[id][2]+")";
     progress = document.getElementById("prgss"+(id+1));
     progress.value = listaProgress[id][1];
     
     localStorage.setItem("listaProgressLS", JSON.stringify(listaProgress));
+    analisaPrgss(id+1);
 }
 function removerPonto(id){
     listaProgress[id][1] = listaProgress[id][1]-1;
@@ -125,6 +128,19 @@ function removerPonto(id){
     titulo.innerHTML = (contadorIndex-1)+". "+listaProgress[id][0]+" ("+listaProgress[id][1]+"/"+listaProgress[id][2]+")";
     progress = document.getElementById("prgss"+(id+1));
     progress.value = listaProgress[id][1];
-
+    
     localStorage.setItem("listaProgressLS", JSON.stringify(listaProgress));
+    analisaPrgss(id+1);
+}
+
+function analisaPrgss(idItem){
+    item = document.getElementById(idItem);
+    progress = item.querySelector("progress");
+    if(progress.value>=progress.max){
+        progress.classList.add("concluido");
+        item.classList.add("itemConcluido");
+    }else if(progress.value<progress.max){
+        progress.classList.remove("concluido");
+        item.classList.remove("itemConcluido");
+    }
 }
