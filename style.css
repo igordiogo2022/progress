@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root{
-    --cor1: rgb(73, 73, 73);
+    --cor1: #262B55;
     --cor2: white;
-    --cor3: rgb(0, 194, 0);
+    --cor3: #1F962C;
+    --cor4: #0B0B14;
 
-    --subCor: rgb(150, 150, 150);
+    --subCor: #5555b3;
 }
 *{
     margin: 0;
     padding: 0;
 }
 body{
-    background-image: linear-gradient(180deg, rgb(90, 90, 90), rgb(0, 0, 0));
+    background-image: linear-gradient(180deg, #262B55, rgb(0, 0, 0));
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
@@ -27,7 +28,7 @@ body{
     font-family: "Poppins", serif;
     margin: 1% 0;
 }
-#botoes{
+.botoes{
     display: flex;
     gap:10%;
     width: 100%;
@@ -41,14 +42,13 @@ body{
     height: 90%;
     font-size: 18px;
     border: 0;
-    border-radius: 16px;
-    box-shadow: -5px 5px 15px black;
+    border-radius: 25px;
     font-family: "Poppins", serif;
     text-decoration: none;
-    background-color: var(--cor2);
+    background-color: #0F1322;
     display: flex;
     align-items: center;
-    color: black;
+    color: var(--cor2);
 }
 .botao:hover{
     background-color: var(--subCor);
@@ -65,7 +65,7 @@ main{
 }
 
 .item{
-    background-color: gray;
+    background-color: #1e2c4b;
     padding: 2% 2% 4% 2%;
     border-radius: 14px;
     margin-bottom: 3%;
@@ -87,7 +87,7 @@ progress{
 }
 progress::-webkit-progress-bar{
     border-radius: 50px;
-    background: var(--cor2);
+    background: #131623;
 }
 progress::-webkit-progress-value{
     border-radius: 50px;
@@ -103,17 +103,34 @@ progress::-webkit-progress-value{
     gap: 12px;
     margin-top: 2%;
 }
+.botoesItem .botao{
+    font-size: 22px;
+}
 
 @media (max-width: 500px) {
     #botoes{
         height: 6vh;
         gap: 5%;
     }
-    .botao{
+    main{
+        width: 80%;
+    }
+    .botoes{
+        gap: 5%;    
+    }
+    .botoes .botao{
+        height: 70%;
+        font-size: 16px;
+    }
+    .botoesItem .botao{
+        padding: 0 10%;
         font-size: 16px;
     }
     .tituloItem{
         font-size: 17px;
+    }
+    .item{
+        margin-bottom: 8%;
     }
     progress {
         height: 20px;

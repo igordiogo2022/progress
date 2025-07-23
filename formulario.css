@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root{
-    --cor1: rgb(87, 87, 87);
+    --cor1: #262B55;
     --cor2: white;
     --fonte1: "Poppins", serif;
 }
@@ -9,7 +9,9 @@
     padding: 0;
 }
 body{
-    background-color: var(--cor1);
+    background-image: linear-gradient(180deg, #262B55, #000000);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +52,7 @@ input{
 input{
     height: 20%;
     border: 0;
-    background-color: var(--cor1);
+    background-color: #1e224200;
     color: white;
     border-bottom:1px solid white;
     outline: 0;
