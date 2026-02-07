@@ -66,7 +66,7 @@ main{
 
 .item{
     background-color: #1e2c4b;
-    padding: 2% 2% 4% 2%;
+    padding: 2% 2% 2% 2%;
     border-radius: 14px;
     margin-bottom: 3%;
 }
@@ -106,6 +106,11 @@ progress::-webkit-progress-value{
 .botoesItem .botao{
     font-size: 22px;
 }
+.dataAtualizacao{
+    width: 100%;
+    text-align: center;
+    margin-top: 1%;
+}
 
 @media (max-width: 500px) {
     #botoes{
@@ -134,5 +139,8 @@ progress::-webkit-progress-value{
     }
     progress {
         height: 20px;
+    }
+    .dataAtualizacao{
+        font-size: 12px;
     }
 }

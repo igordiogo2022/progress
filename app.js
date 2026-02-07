@@ -14,12 +14,13 @@ function carregarProgress(){
     if(listaProgress.length>0){
         contadorIndex = 1;
         for (const progressLS of listaProgress){
-            item = document.createElement("div");
-            titulo = document.createElement("h2");
-            progress = document.createElement("progress");
-            divBotoes = document.createElement("div");
-            btnAdicionar = document.createElement("button");
-            btnRemover = document.createElement("button");
+            let item = document.createElement("div");
+            let titulo = document.createElement("h2");
+            let progress = document.createElement("progress");
+            let divBotoes = document.createElement("div");
+            let btnAdicionar = document.createElement("button");
+            let btnRemover = document.createElement("button");
+            let dataAtualizacao = document.createElement("p");
 
             item.classList.add("item");
             titulo.classList.add("tituloItem");
@@ -28,24 +29,32 @@ function carregarProgress(){
             divBotoes.classList.add("botoesItem");
             btnAdicionar.classList.add("botao");
             btnRemover.classList.add("botao");
+            dataAtualizacao.classList.add("dataAtualizacao");
             
             btnAdicionar.setAttribute("onclick","adicionarPonto("+(contadorIndex-1)+")");
             btnRemover.setAttribute("onclick","removerPonto("+(contadorIndex-1)+")");
 
             progress.id = "prgss"+contadorIndex;
             titulo.id = "ttl"+contadorIndex;
+            dataAtualizacao.id = "data"+contadorIndex;
             item.id = contadorIndex;
             
             titulo.innerHTML = contadorIndex+". "+progressLS[0]+" ("+progressLS[1]+"/"+progressLS[2]+")";
             contadorIndex++;
             btnAdicionar.innerHTML = "+";
             btnRemover.innerHTML = "-";
+            if(progressLS[3] !== undefined){
+                dataAtualizacao.innerHTML = "Última atualização: "+progressLS[3];
+            }else{
+                dataAtualizacao.innerHTML = "Sem data de última atualização";
+            }
 
             divBotoes.appendChild(btnAdicionar);
             divBotoes.appendChild(btnRemover);
             item.appendChild(titulo);
             item.appendChild(progress);
             item.appendChild(divBotoes);
+            item.appendChild(dataAtualizacao);
             
             main = document.querySelector("main");
             main.appendChild(item);
@@ -83,8 +92,9 @@ function adicionar(){
     nome = document.getElementById("progress").value;
     meta = document.getElementById("meta").value;
     valor = 0;
+    dataHoje = new Date().toLocaleDateString('pt-BR');
     
-    listaProgress.push([nome, valor, meta]);
+    listaProgress.push([nome, valor, meta, dataHoje]);
     localStorage.setItem("listaProgressLS", JSON.stringify(listaProgress));
 }
 function editar(){
@@ -111,23 +121,34 @@ function excluir(){
 }
 
 function adicionarPonto(id){
+    // Atualiza o localStorage
+    dataHoje = new Date().toLocaleDateString('pt-BR');
     listaProgress[id][1] = listaProgress[id][1]+1;
+    listaProgress[id][3] = dataHoje;
     
+    // Atualiza o html
     titulo = document.getElementById("ttl"+(id+1));
     titulo.innerHTML = (contadorIndex-1)+". "+listaProgress[id][0]+" ("+listaProgress[id][1]+"/"+listaProgress[id][2]+")";
     progress = document.getElementById("prgss"+(id+1));
     progress.value = listaProgress[id][1];
+    data = document.getElementById("data"+(id+1));
+    data.innerHTML = "Última atualização: "+dataHoje;
     
     localStorage.setItem("listaProgressLS", JSON.stringify(listaProgress));
     analisaPrgss(id+1);
 }
 function removerPonto(id){
+    // Atualiza o localStorage
+    dataHoje = new Date().toLocaleDateString('pt-BR');
     listaProgress[id][1] = listaProgress[id][1]-1;
+    listaProgress[id][3] = dataHoje;
     
     titulo = document.getElementById("ttl"+(id+1));
     titulo.innerHTML = (contadorIndex-1)+". "+listaProgress[id][0]+" ("+listaProgress[id][1]+"/"+listaProgress[id][2]+")";
     progress = document.getElementById("prgss"+(id+1));
     progress.value = listaProgress[id][1];
+    data = document.getElementById("data"+(id+1));
+    data.innerHTML = "Última atualização: "+dataHoje;
     
     localStorage.setItem("listaProgressLS", JSON.stringify(listaProgress));
     analisaPrgss(id+1);
